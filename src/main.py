@@ -26,24 +26,11 @@ import sys
 
 import functions
 
-folder_list = [
-    "Example of folder"
-]
-raster_names = [
-    "Example of raster name"
-]
-raster_paths = [
-    "Example of raster path"
-]
-results_folder = "./outputs/"
-output_files = [
-    "./outputs/gfw/layer/",
-    "./outputs/radd/layer/",
-    "./outputs/tropisco/layer/"
-]
-layer = "./inputs/layers/layer.shp"
-
-threshold = 0.75
+folder_list = ["path/to/working/directory"]
+raster_names = ["raster_name"]
+raster_paths = ["path/to/raster.vrt"]
+output_files = ["./outputs/"]
+threshold = 0.75  # Detection threshold
 
 layers_list = functions.create_layers_from_folders(
     folder_list, layer, raster_names, raster_paths, output_files, threshold)
