@@ -1,0 +1,6 @@
+/outputs
+/__pycache__
+*.pdf
+*.ods
+*.qgz
+*.html
