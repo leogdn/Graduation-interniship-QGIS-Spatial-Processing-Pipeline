@@ -192,10 +192,6 @@ The processing pipeline follows these steps:
 Toulouse INP-ENSEEIHT  
 CESBIO (Centre d'Études Spatiales de la Biosphère)
 
-## License
-
-[Specify your license here if applicable]
-
 ## Notes
 
 - Some parameters are hardcoded in scripts (paths, thresholds). Edit configuration sections before running.
