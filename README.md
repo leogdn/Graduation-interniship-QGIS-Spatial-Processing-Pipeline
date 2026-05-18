@@ -14,7 +14,7 @@ This pipeline is designed for evaluating the accuracy of geospatial detection an
 **Project Type:** Graduation Internship  
 **Institution:** Toulouse INP-ENSEEIHT  
 **Organization:** CESBIO (Centre d'Études Spatiales de la Biosphère)  
-**Author:** Léonard Gaudin [(leonard.gaudin@etu.toulouse-inp.fr)](mailto:leonard.gaudin@etu.toulouse-inp.fr
+**Author:** Léonard Gaudin [(Mail)](mailto:leonard.gaudin@etu.toulouse-inp.fr)
 
 ## Requirements
 
