@@ -147,7 +147,7 @@ def process_qgis(raster,layer,output_folder,distances):
     import processing
     from qgis.core import QgsVectorLayer, QgsProject, QgsRasterLayer, QgsVectorFileWriter
 
-    # 🔧 PARAMÈTRES
+    # Parameters
     input_shp = layer
     input_raster = raster
     output_folder = output_folder
@@ -320,13 +320,13 @@ def compute_distances(layer,output_folder):
     import processing
     from qgis.core import QgsVectorLayer, QgsProject, QgsRasterLayer, QgsVectorFileWriter
 
-    # 🔧 PARAMÈTRES
+    # Parameters
     input_shp = layer
     output_folder = output_folder
 
     print(f"SHP LAYER : {input_shp}")
 
-    # 📂 Charger la couche
+    # Load the vector layer
     layer = QgsVectorLayer(input_shp, "layer", "ogr")
 
     if not layer.isValid():
