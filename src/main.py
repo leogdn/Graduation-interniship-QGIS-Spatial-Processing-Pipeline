@@ -36,12 +36,10 @@ layers_list = functions.create_layers_from_folders(
     folder_list, layer, raster_names, raster_paths, output_files, threshold)
 
 distances = range(5, 1000, 5)  # List of buffer sizes to evaluate (5m, 10m, ..., 1000m)
-
 mode = "local" # "local" for local processing (one folder at a time), "global" for global processing (all folders together)
-
 poly_list = [] # List of valid polygons to use for evaluation (if empty, all polygons in the layer will be used)
-
 detection_polys = True # Detect valid polygons in each folder and process them separately (True) or process all folders together without polygon detection (False)
+detection_threshold = 0.0 # Convergence threshold for valid polygon detection (if detection_polys is True)
 
 if not detection_polys :
     functions.process_folders(
@@ -54,7 +52,7 @@ if not detection_polys :
     layers_list=layers_list,
     poly_list=poly_list,
     distances=distances,
-    detection_threshold=0
+    detection_threshold=detection_threshold
     )
 else:
     for folder_index in range(len(folder_list)):
@@ -72,5 +70,5 @@ else:
         layers_list=layer,
         poly_list=poly_list,
         distances=distances,
-        detection_threshold=0
+        detection_threshold=detection_threshold
         )

@@ -781,39 +781,30 @@ def process_folders(mode,detection_polys,folder_list,raster_names,raster_paths,o
     poly_list.to_csv(os.path.join(output_file, "codealerta_list.csv"), index=False)
 
     print("Postprocessing the results : Postprocessing by polygons")
-
     postprocess_by_polygon(poly_list,folder_list,raster_names,output_file,distances)
 
     print("Postprocessing the results : Merging the df")
-
     df_merged = get_merged_df_from_folder(output_file, raster_name, poly_list)
 
     print("Postprocessing the results : Agregating the results by distances")
-
     get_aggregated_df_from_folder(df_merged, raster_name, output_file)
 
     if detection_polys:
 
         print("Postprocessing the results : Detection polys ok")
-
         polys_ok = detect_polys_ok(poly_list,raster_names[folder_index],output_file,detection_threshold)
 
         print("Postprocessing the results : Computing the stats on the valid polygons set")
-
         output_file = os.path.join(output_file, f"stats_on_polys_ok")
-
         os.makedirs(output_file, exist_ok=True)
 
         print("Postprocessing the results : Postprocessing by polygons on the valid polygons set")
-
         postprocess_by_polygon(polys_ok,folder_list,raster_names,output_file,distances)
 
         print("Postprocessing the results : Merging the df on the valid polygons set")
-
         df_merged = get_merged_df_from_folder(output_file, raster_name, polys_ok)
 
         print("Postprocessing the results : Agregating the results by distances on the valid polygons set")
-
         get_aggregated_df_from_folder(df_merged, raster_name, output_file)
 
     print("FINISHED ALL THE PROCESSING !")
