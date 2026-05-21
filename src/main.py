@@ -23,8 +23,10 @@ Dependencies
 """
 
 import sys
+import importlib
 
 import functions
+importlib.reload(functions)
 
 folder_list = ["path/to/working/directory"]
 raster_names = ["raster_name"]
