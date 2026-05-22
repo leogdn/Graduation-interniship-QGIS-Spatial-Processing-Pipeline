@@ -637,23 +637,27 @@ def get_aggregated_df_from_folder(merged_df, raster_name, results_folder):
     import pandas as pd
     import numpy as np
 
-    functions_array = ["mean","std","median"]
+    if merged_df.empty:
+        print("Merged DataFrame is empty. No aggregation will be performed.")
+        return pd.DataFrame()  # Return an empty DataFrame if there are no results to aggregate
+    else:
+        functions_array = ["mean","std","median"]
 
-    for fun in functions_array:
-        aggregated_df = merged_df.groupby("Distance of buffer (m)").agg({
-            f"{raster_name} f1-score": [fun],
-            f"derivate": [fun]
+        for fun in functions_array:
+            aggregated_df = merged_df.groupby("Distance of buffer (m)").agg({
+                f"{raster_name} f1-score": [fun],
+                f"derivate": [fun]
 
-        }).reset_index()
+            }).reset_index()
 
-        # Flatten MultiIndex columns 
-        aggregated_df.columns = ['Distance of buffer (m)', f'{fun} of f1-score', f'{fun} of derivate']
-        aggregated_df[f"derivate of {fun}"] = np.gradient(aggregated_df[f'{fun} of f1-score'], aggregated_df['Distance of buffer (m)'])
-        output_folder = os.path.join(results_folder, f"{raster_name}")
-        os.makedirs(output_folder, exist_ok=True)
-        output_file = os.path.join(output_folder, f"results_{fun}.csv")
-        aggregated_df.to_csv(output_file, sep=';', index=False)
-        print(f"Merged file saved : {output_file}")
+            # Flatten MultiIndex columns 
+            aggregated_df.columns = ['Distance of buffer (m)', f'{fun} of f1-score', f'{fun} of derivate']
+            aggregated_df[f"derivate of {fun}"] = np.gradient(aggregated_df[f'{fun} of f1-score'], aggregated_df['Distance of buffer (m)'])
+            output_folder = os.path.join(results_folder, f"{raster_name}")
+            os.makedirs(output_folder, exist_ok=True)
+            output_file = os.path.join(output_folder, f"results_{fun}.csv")
+            aggregated_df.to_csv(output_file, sep=';', index=False)
+            print(f"Merged file saved : {output_file}")
 
 def get_codealerta_from_shp(shp_path):
     """
